@@ -1,18 +1,40 @@
-import { Button, Checkbox, Divider, Form, Input } from 'antd';
+import { App, Button, Checkbox, Divider, Form, Input } from 'antd';
 import type { FormProps } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './login.scss'; // Assuming you have a CSS file for styling
 import { useState } from 'react';
+import { loginApi } from '@/service/api';
 const LoginPage = () => {
     const [isSubmit, setIsSubmit] = useState(false);
+    const { message } = App.useApp();
+    const navigate = useNavigate();
+
     type FieldType = {
-        username?: string;
-        password?: string;
+        username: string;
+        password: string;
         remember?: string;
     };
 
-    const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
-        console.log('Success:', values);
+    const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
+        const userLogin = {
+            username: values.username,
+            password: values.password,
+        }
+        setIsSubmit(true);
+        const res = await loginApi(userLogin.username, userLogin.password);
+        if (res.data && res.statusCode === 200) {
+            localStorage.setItem('access_token', res.data.access_token);
+            message.success(res.message);
+            // await new Promise(resolve => setTimeout(resolve, 2000));
+            setTimeout(() => {
+                navigate('/');
+            }, 3000)
+            // navigate('/');
+            //
+        } else {
+            message.error(res.message);
+        }
+        setIsSubmit(false);
     };
 
     const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
@@ -35,9 +57,9 @@ const LoginPage = () => {
                         autoComplete="off"
                     >
                         <Form.Item<FieldType>
-                            label="Username"
+                            label="Username or Email"
                             name="username"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'Please input your username or email!' }]}
                         >
                             <Input />
                         </Form.Item>
@@ -55,7 +77,7 @@ const LoginPage = () => {
                         </Form.Item>
 
                         <Form.Item label={null}>
-                            <Button type="primary" htmlType="submit">
+                            <Button type="primary" htmlType="submit" loading={isSubmit}>
                                 Đăng Nhập
                             </Button>
                         </Form.Item>
@@ -71,4 +93,8 @@ const LoginPage = () => {
 
     )
 }
-export default LoginPage;
+export default () => (
+    <App>
+        <LoginPage />
+    </App>
+);

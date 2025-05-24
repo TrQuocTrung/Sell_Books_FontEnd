@@ -43,7 +43,7 @@ const RegisterPage = () => {
                 message: res.message,
             });
             await new Promise(resolve => setTimeout(resolve, 3000));
-            navigate('/login', {});
+            navigate('/login');
         }
         else {
             notification.error({
