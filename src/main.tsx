@@ -7,13 +7,19 @@ import Books from 'pages/client/books';
 import About from 'pages/client/about';
 import RegisterPage from 'pages/client/auth/register';
 import LoginPage from 'pages/client/auth/login';
-import 'styles/global.scss';
+import 'styles/global.scss'
+import HomePage from './pages/client/homepage';
 let router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     children: [
       {
+        index: true,
+        element: <HomePage />
+      },
+      {
+
         path: "/books",
         element: <Books />
       },
@@ -37,5 +43,6 @@ let router = createBrowserRouter([
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <RouterProvider router={router} />
+
   </StrictMode>,
 )

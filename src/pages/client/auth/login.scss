@@ -1,0 +1,37 @@
+.form-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; // chiều cao toàn màn hình
+    background: linear-gradient(to bottom, #eaeef2, #dbe0e6); // nền nhẹ
+
+    .main {
+        background: #fff;
+        padding: 30px 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+
+        .wrapper {
+            .header-title {
+                text-align: center;
+                font-size: x-large;
+                margin-bottom: 20px;
+            }
+
+            .footer-form {
+                .footer-title {
+                    display: flex;
+                    flex-direction: column;
+                    align-content: center;
+                    font-size: small;
+                    margin: 0 auto;
+                    margin-top: 20px;
+                }
+            }
+        }
+
+
+    }
+}
