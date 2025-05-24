@@ -8,7 +8,8 @@ import About from 'pages/client/about';
 import RegisterPage from 'pages/client/auth/register';
 import LoginPage from 'pages/client/auth/login';
 import 'styles/global.scss'
-import HomePage from './pages/client/homepage';
+import HomePage from 'pages/client/homepage';
+import { AppProvider } from 'components/context/app.context';
 let router = createBrowserRouter([
   {
     path: "/",
@@ -42,7 +43,9 @@ let router = createBrowserRouter([
 ]);
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AppProvider>
+      <RouterProvider router={router} />
+    </AppProvider>
 
   </StrictMode>,
 )

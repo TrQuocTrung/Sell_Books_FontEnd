@@ -41,4 +41,16 @@ declare global {
             phone: number,
         }
     }
+    interface IUser {
+
+        email: string;
+        user: {
+            email: string;
+            username: string;
+            role: {
+                _id: string;
+                name: string;
+            }
+        }
+    }
 }
