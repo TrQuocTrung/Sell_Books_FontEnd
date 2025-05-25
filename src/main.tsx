@@ -10,6 +10,7 @@ import LoginPage from 'pages/client/auth/login';
 import 'styles/global.scss'
 import HomePage from 'pages/client/homepage';
 import { AppProvider } from 'components/context/app.context';
+import ProtectedRoute from 'components/authProtected/auth';
 let router = createBrowserRouter([
   {
     path: "/",
@@ -27,6 +28,23 @@ let router = createBrowserRouter([
       {
         path: "/about",
         element: <About />
+      },
+      {
+        path: "/checkout",
+        element: (
+          <ProtectedRoute>
+            <div>Checkout Page</div>
+          </ProtectedRoute>
+        )
+
+      },
+      {
+        path: "/admin",
+        element: (
+          <ProtectedRoute>
+            <div>Admin Page</div>
+          </ProtectedRoute>
+        )
       }
 
     ],

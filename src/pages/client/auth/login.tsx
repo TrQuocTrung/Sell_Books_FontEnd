@@ -4,11 +4,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import './login.scss'; // Assuming you have a CSS file for styling
 import { useState } from 'react';
 import { loginApi } from '@/service/api';
+import { useCurrentApp } from '@/components/context/app.context';
 const LoginPage = () => {
     const [isSubmit, setIsSubmit] = useState(false);
     const { message } = App.useApp();
     const navigate = useNavigate();
-
+    const { setIsAuthenticated, setUser } = useCurrentApp();
     type FieldType = {
         username: string;
         password: string;
@@ -24,11 +25,13 @@ const LoginPage = () => {
         const res = await loginApi(userLogin.username, userLogin.password);
         if (res.data && res.statusCode === 200) {
             localStorage.setItem('access_token', res.data.access_token);
+            setIsAuthenticated(true);
+            setUser(res.data.user);
             message.success(res.message);
             // await new Promise(resolve => setTimeout(resolve, 2000));
             setTimeout(() => {
                 navigate('/');
-            }, 3000)
+            }, 2000)
             // navigate('/');
             //
         } else {

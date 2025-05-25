@@ -1,5 +1,5 @@
 import type { FormProps } from 'antd';
-import { App, Button, Checkbox, Divider, Form, Input, InputNumber, notification, Select } from 'antd';
+import { App, Button, Divider, Form, Input, InputNumber, Select } from 'antd';
 import { useState } from 'react';
 import './register.scss'
 import { registerApi } from '@/service/api';

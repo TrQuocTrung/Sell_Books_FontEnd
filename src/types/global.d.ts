@@ -42,15 +42,15 @@ declare global {
         }
     }
     interface IUser {
-
         email: string;
-        user: {
-            email: string;
-            username: string;
-            role: {
-                _id: string;
-                name: string;
-            }
+        username: string;
+        role: {
+            _id: string;
+            name: string;
+
         }
+    }
+    interface IFectchAccount {
+        user: IUser;
     }
 }
