@@ -15,3 +15,7 @@ export const logoutApi = () => {
     const urlBackend = "api/v1/auth/logout"
     return axios.post<IBackendRes<null>>(urlBackend)
 }
+export const getAllCategories = () => {
+    const urlBackend = "/api/v1/category";
+    return axios.get<ICategoryResponse>(urlBackend)
+}

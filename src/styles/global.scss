@@ -1,3 +1,24 @@
 * {
     margin: 0;
+
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background-color: #f9f5ee;
+    color: #333;
+}
+
+/* Wrapper chính của toàn bộ nội dung trang */
+.page-container {
+    max-width: 1500px; // Giới hạn chiều ngang nội dung như Vinabook
+    margin: 0 auto; // Căn giữa
+    padding: 20px 10px; // 👉 Padding trái + phải để tạo khoảng trống }
+
+}
+
+.page-layout {
+    display: flex;
+    gap: 24px;
 }

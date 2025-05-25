@@ -1,6 +1,6 @@
 import './app.header.scss'
 import { Input, Button, App } from "antd";
-import { SearchOutlined, PhoneOutlined, MessageOutlined } from "@ant-design/icons";
+import { SearchOutlined, PhoneOutlined, MessageOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 
 import { FaLocationArrow } from 'react-icons/fa';
 import { useCurrentApp } from '../context/app.context';
@@ -67,6 +67,12 @@ const Appheader = () => {
                             <button onClick={() => handleLogout()}>Đăng xuất</button>
                         </div>}
                 </div>
+                <div className="cart-icon">
+                    <button>
+                        <ShoppingCartOutlined />
+                        <span className="cart-count">0</span> {/* Số lượng sản phẩm, có thể thay bằng state */}
+                    </button>
+                </div>
                 {/* Thông tin liên hệ */}
                 <div className="contact-info">
                     <PhoneOutlined className="contact-icon" />
@@ -93,6 +99,7 @@ const Appheader = () => {
                 </span>
 
             </div>
+
         </>
     );
 }

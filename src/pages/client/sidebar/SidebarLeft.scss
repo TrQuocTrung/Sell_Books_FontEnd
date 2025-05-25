@@ -1,0 +1,46 @@
+.sidebar {
+    width: 280px; // Chiều rộng cố định giống hình ảnh
+    background-color: #fff; // Nền trắng
+    border: 1px solid #e8e8e8; // Viền xám nhẹ
+    border-radius: 4px; // Bo góc nhẹ
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Bóng nhẹ để nổi bật
+
+    .sidebar-title {
+        font-size: 16px;
+        font-weight: bold;
+        padding: 20px 15px;
+        margin: 0;
+        border-bottom: 1px solid #e8e8e8; // Viền dưới màu xám
+        color: #333; // Màu chữ đậm
+    }
+
+    .category-list {
+        list-style: none; // Loại bỏ dấu chấm mặc định
+        padding: 0;
+        margin: 0;
+
+        .category-item {
+            padding: 10px 15px;
+            font-size: 14px;
+            color: #333; // Màu chữ đen
+            display: flex;
+            justify-content: space-between; // Căn mũi tên sang phải
+            align-items: center;
+            cursor: pointer; // Con trỏ tay khi hover
+
+            &:hover {
+                background-color: #f0f0f0; // Màu xám nhạt khi hover
+                color: #008000; // Màu xanh lá khi hover
+            }
+
+            .arrow-icon {
+                font-size: 12px;
+                color: #666; // Màu xám cho mũi tên
+
+                &:hover {
+                    color: #008000; // Màu xanh lá khi hover
+                }
+            }
+        }
+    }
+}

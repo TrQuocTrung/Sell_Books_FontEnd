@@ -53,4 +53,15 @@ declare global {
     interface IFectchAccount {
         user: IUser;
     }
+    interface ICategory {
+        _id: string,
+        name: string
+    }
+    interface ICategoryResponse {
+        statusCode: number;
+        message: string;
+        data: {
+            result: ICategory[];
+        };
+    }
 }
