@@ -1,5 +1,5 @@
 import { useCurrentApp } from "components/context/app.context";
-import { Button, Result, Spin } from 'antd';
+import { Button, Result } from 'antd';
 import { Link, useLocation } from "react-router-dom";
 interface Iprop {
     children: React.ReactNode;

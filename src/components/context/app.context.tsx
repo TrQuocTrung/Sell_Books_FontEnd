@@ -1,4 +1,6 @@
-import { createContext, useContext, useState } from "react";
+import { getUserApi } from "@/service/api";
+import { createContext, useContext, useEffect, useState } from "react";
+import { RingLoader } from "react-spinners";
 
 interface IAppContext {
     isAuthenticated: boolean;
@@ -17,12 +19,42 @@ export const AppProvider = (props: TProps) => {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     const [user, setUser] = useState<IUser | null>(null);
     const [isApploading, setisApploading] = useState<boolean>(true);
-
+    useEffect(() => {
+        const fetchAccount = async () => {
+            const res = await getUserApi()
+            if (res.data) {
+                setUser(res.data.user)
+                setIsAuthenticated(true)
+            }
+            setisApploading(false)
+        }
+        fetchAccount()
+    }, [])
 
     return (
-        <CurrentAppContext.Provider value={{ isAuthenticated, user, isApploading, setIsAuthenticated, setUser, setisApploading }}>
-            {props.children}
-        </CurrentAppContext.Provider>
+        <>
+            {isApploading === false ?
+                <CurrentAppContext.Provider value=
+                    {{
+                        isAuthenticated,
+                        user,
+                        isApploading,
+                        setIsAuthenticated,
+                        setUser,
+                        setisApploading
+                    }}>
+                    {props.children}
+                </CurrentAppContext.Provider>
+                :
+                <div style={{ position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
+                    <RingLoader
+                        size={80}
+                        color="#36d7b7"
+                    />
+                </div>
+            }
+        </>
+
     );
 };
 export const useCurrentApp = () => {

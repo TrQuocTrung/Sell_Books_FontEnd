@@ -11,6 +11,8 @@ import 'styles/global.scss'
 import HomePage from 'pages/client/homepage';
 import { AppProvider } from 'components/context/app.context';
 import ProtectedRoute from 'components/authProtected/auth';
+import DashboardPage from './components/admin/dashboard';
+import LayoutAdmin from './components/admin/layoutAdmin';
 let router = createBrowserRouter([
   {
     path: "/",
@@ -37,17 +39,42 @@ let router = createBrowserRouter([
           </ProtectedRoute>
         )
 
-      },
-      {
-        path: "/admin",
-        element: (
-          <ProtectedRoute>
-            <div>Admin Page</div>
-          </ProtectedRoute>
-        )
       }
 
     ],
+  },
+  {
+    path: "/admin",
+    element: <ProtectedRoute>
+      <LayoutAdmin />
+    </ProtectedRoute>,
+    children: [
+      {
+        index: true,
+        element: (
+          <ProtectedRoute>
+            <DashboardPage />
+          </ProtectedRoute>
+        )
+      },
+      {
+
+        path: "books",
+        element: <Books />
+      },
+      {
+        path: "oders",
+        element: <Books />
+      },
+      {
+        path: "categories",
+        element: <Books />
+      },
+      {
+        path: "reviews",
+        element: <Books />
+      }
+    ]
   },
   {
     path: "/login",
@@ -64,6 +91,5 @@ createRoot(document.getElementById('root')!).render(
     <AppProvider>
       <RouterProvider router={router} />
     </AppProvider>
-
   </StrictMode>,
 )

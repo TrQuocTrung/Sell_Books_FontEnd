@@ -48,7 +48,7 @@ const LoginPage = () => {
         <div className='form-login'>
             <div className='main'>
                 <section className='wrapper'>
-                    <div className='header-title'>Đăng Nhập</div>
+                    <div className='header-title-login'>Đăng Nhập</div>
                     <Form
                         name="basic"
                         labelCol={{ span: 8 }}

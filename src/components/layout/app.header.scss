@@ -1,0 +1,182 @@
+.header-title {
+    display: flex;
+    justify-content: space-between; // Phân bố đều các phần tử
+    align-items: center; // Căn giữa theo chiều dọc
+    background-color: #00803f8f; // Màu xanh lá cây đậm của Vinabook
+    padding: 10px 20px; // Khoảng cách trong và ngoài
+    color: #fff; // Màu chữ trắng
+
+    .header-title-content {
+        display: flex;
+        align-items: center; // Căn giữa icon và văn bản
+        gap: 5px; // Khoảng cách giữa icon và văn bản
+
+        .icon-size {
+            font-size: 16px; // Kích thước icon
+            color: #fff; // Màu trắng cho icon
+        }
+
+        .text-title {
+            font-size: 14px; // Kích thước chữ
+            font-weight: 500; // Độ đậm vừa phải
+            white-space: nowrap; // Ngăn văn bản xuống dòng
+        }
+    }
+
+    // Phần nút Đăng Nhập và Đăng Ký
+    .login-register {
+        display: flex;
+        gap: 10px; // Khoảng cách giữa hai nút
+
+        a {
+            text-decoration: none; // Loại bỏ gạch chân
+            color: #fff; // Màu chữ trắng
+            background-color: #ff6200; // Màu cam của Vinabook
+            padding: 5px 15px; // Khoảng cách trong nút
+            border-radius: 4px; // Bo góc nhẹ
+            font-size: 14px;
+            font-weight: 500;
+
+            &:hover {
+                background-color: #e65c00; // Màu cam đậm hơn khi hover
+            }
+        }
+    }
+}
+
+// Responsive cho mobile
+@media (max-width: 768px) {
+    .header-title {
+        flex-direction: column; // Chuyển thành cột trên mobile
+        align-items: flex-start; // Căn trái
+        padding: 10px;
+
+        .header-title-content {
+            margin-bottom: 10px; // Khoảng cách giữa các mục
+            width: 100%; // Chiếm toàn bộ chiều rộng
+
+            &:last-child {
+                margin-bottom: 0; // Loại bỏ margin cho mục cuối
+            }
+        }
+
+        .login-register {
+            width: 100%;
+            justify-content: flex-end; // Căn phải hai nút trên mobile
+        }
+    }
+}
+
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #e8e8e8;
+
+    .logo {
+        .logo-image {
+            height: 40px; // Điều chỉnh chiều cao logo, bạn có thể thay đổi tùy theo kích thước thực tế
+            width: auto; // Giữ tỷ lệ ảnh
+        }
+    }
+
+    .search-bar {
+        flex: 1;
+        max-width: 500px;
+        margin: 0 20px;
+
+        .search-input {
+            height: 55px;
+
+            .ant-input {
+                border-radius: 4px 0 0 4px;
+            }
+        }
+
+        .search-button {
+            background-color: #000 !important;
+            border-color: #000 !important;
+            border-radius: 0 4px 4px 0;
+            height: 40px;
+        }
+    }
+
+    .contact-info {
+        display: flex;
+        align-items: center;
+        margin-right: 50px;
+
+        .contact-icon {
+            font-size: 18px;
+            margin-right: 5px;
+        }
+
+        .contact-text {
+            .contact-label {
+                font-size: 12px;
+                color: #888;
+            }
+
+            .contact-number {
+                font-size: 16px;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .user-menu {
+        display: flex;
+        align-items: center;
+        gap: 15px; // Khoảng cách giữa các phần tử
+        padding: 5px 10px;
+        background-color: #fff; // Nền trắng, tương phản với header xanh
+        border: 1px solid #e8e8e8; // Viền nhẹ
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Bóng nhẹ để nổi bật
+
+        div {
+            display: flex;
+            align-items: center;
+            gap: 10px; // Khoảng cách giữa các liên kết/nút
+
+            span {
+                font-size: 14px;
+                font-weight: 500;
+                color: #333; // Màu chữ đậm
+
+                &.text-content {
+                    margin-right: 10px; // Khoảng cách giữa "Đăng Nhập" và "Đăng Ký"
+                }
+
+                a {
+                    text-decoration: none;
+                    color: #008000; // Màu xanh lá của Vinabook
+                    padding: 5px 10px;
+                    border-radius: 4px;
+
+                    &:hover {
+                        color: #fff;
+                        background-color: #008000; // Màu xanh lá khi hover
+                    }
+                }
+            }
+
+            button {
+                padding: 5px 15px;
+                font-size: 14px;
+                font-weight: 500;
+                color: #fff;
+                background-color: #ff6200; // Màu cam của Vinabook
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #e65c00; // Màu cam đậm hơn khi hover
+                }
+            }
+        }
+    }
+}
