@@ -15,7 +15,14 @@ export const logoutApi = () => {
     const urlBackend = "api/v1/auth/logout"
     return axios.post<IBackendRes<null>>(urlBackend)
 }
+//Categories
 export const getAllCategories = () => {
     const urlBackend = "/api/v1/category";
     return axios.get<ICategoryResponse>(urlBackend)
+}
+
+//Books
+export const getAllBooks = () => {
+    const urlBackend = "/api/v1/books";
+    return axios.get<IBookResponse>(urlBackend)
 }

@@ -64,4 +64,30 @@ declare global {
             result: ICategory[];
         };
     }
+    interface IBook {
+        _id: string;
+        name: string;
+        author: string;
+        image: string;
+        description: string;
+        price: number;
+        stock: number;
+        soldQuantity: number;
+        categories: ICategory[];
+    }
+    interface IBookResponse {
+        statusCode: number;
+        message: string;
+        data: {
+            meta: {
+                current: number,
+                pageSize: number,
+                pages: number,
+                total: number
+            };
+            result: IBook[];
+        }
+
+
+    }
 }

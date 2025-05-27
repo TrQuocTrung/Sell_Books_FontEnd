@@ -1,0 +1,63 @@
+.featured-books {
+    margin-top: 30px;
+    background-color: #fff;
+
+    .section-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        border-bottom: 2px solid #008000; // Màu xanh lá cây của Vinabook
+        padding-bottom: 5px;
+        display: inline-block;
+    }
+
+    .book-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); // 4 sách trên mỗi hàng (vì pageSize=4)
+        gap: 20px; // Khoảng cách giữa các ô sách
+        border-radius: 15px;
+    }
+
+    .book-item {
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        padding: 10px;
+        text-align: center;
+        transition: box-shadow 0.3s ease;
+        justify-content: center;
+        cursor: pointer;
+        border: none;
+
+        &:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Hiệu ứng hover giống Vinabook
+        }
+
+        .book-image {
+            img {
+                width: 100%;
+                height: 220px; // Chiều cao ảnh bìa sách giống Vinabook
+                object-fit: cover;
+            }
+        }
+
+        .book-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            margin: 10px 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; // Giới hạn 2 dòng
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .book-price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #d0021b; // Màu đỏ giống Vinabook
+        }
+    }
+}

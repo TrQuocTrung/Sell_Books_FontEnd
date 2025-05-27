@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from '@/layout';
-import Books from 'pages/client/books';
 import About from 'pages/client/about';
 import RegisterPage from 'pages/client/auth/register';
 import LoginPage from 'pages/client/auth/login';
@@ -25,7 +24,7 @@ let router = createBrowserRouter([
       {
 
         path: "/books",
-        element: <Books />
+        element: <div></div>
       },
       {
         path: "/about",
@@ -60,19 +59,19 @@ let router = createBrowserRouter([
       {
 
         path: "books",
-        element: <Books />
+        element: <div></div>
       },
       {
         path: "oders",
-        element: <Books />
+        element: <div></div>
       },
       {
         path: "categories",
-        element: <Books />
+        element: <div></div>
       },
       {
         path: "reviews",
-        element: <Books />
+        element: <div></div>
       }
     ]
   },

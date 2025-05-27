@@ -1,8 +1,10 @@
+import FeaturedBooks from "./books/FeaturedBooks";
+import './homepage.scss'
+
 const HomePage = () => {
     return (
-        <div>
-            <h1>Welcome to the Home Page</h1>
-            <p>This is the home page of our application.</p>
+        <div className="home-container" >
+            <FeaturedBooks />
         </div>
     );
 }

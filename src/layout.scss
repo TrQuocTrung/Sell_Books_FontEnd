@@ -1,0 +1,17 @@
+/* Wrapper chính của toàn bộ nội dung trang */
+.page-container {
+    max-width: 1500px; // Giới hạn chiều ngang nội dung như Vinabook
+    margin: 0 auto; // Căn giữa
+    padding: 20px 10px; // 👉 Padding trái + phải để tạo khoảng trống }
+
+}
+
+.page-layout {
+    display: flex;
+    gap: 24px;
+}
+
+.main-content {
+    flex: 1; // Chiếm toàn bộ không gian còn lại sau sidebar
+    max-width: 1220px; // 1500px - 280px (sidebar) - 24px (gap)
+}
