@@ -12,6 +12,7 @@ import { AppProvider } from 'components/context/app.context';
 import ProtectedRoute from 'components/authProtected/auth';
 import DashboardPage from './components/admin/dashboard';
 import LayoutAdmin from './components/admin/layoutAdmin';
+import DetailBook from './pages/client/books/detailBook';
 let router = createBrowserRouter([
   {
     path: "/",
@@ -22,9 +23,8 @@ let router = createBrowserRouter([
         element: <HomePage />
       },
       {
-
-        path: "/books",
-        element: <div></div>
+        path: "/books/:id",
+        element: <DetailBook />
       },
       {
         path: "/about",

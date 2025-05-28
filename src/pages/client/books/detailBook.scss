@@ -1,0 +1,131 @@
+.detail-book-container {
+    max-width: 1550px;
+    margin: 30px auto;
+
+}
+
+.detail-book {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+
+    .book-image {
+        flex: 0 0 300px;
+
+        img {
+            width: 300px;
+            height: 400px;
+            object-fit: cover;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .book-info {
+        flex: 1;
+
+        .book-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .book-author {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+
+            strong {
+                color: #333;
+            }
+        }
+
+        .book-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #d0021b; // Màu đỏ giống Vinabook
+            margin-bottom: 10px;
+
+            strong {
+                color: #333;
+            }
+        }
+
+        .book-short-desc {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .book-details {
+            margin-bottom: 20px;
+
+            p {
+                font-size: 14px;
+                color: #333;
+                margin: 5px 0;
+
+                strong {
+                    color: #333;
+                }
+            }
+        }
+
+        .book-actions {
+            display: flex;
+            gap: 15px;
+
+            .buy-now {
+                background-color: #008000; // Màu xanh lá giống Vinabook
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 4px;
+                transition: background-color 0.3s;
+
+                &:hover {
+                    background-color: #006600; // Giá trị màu tĩnh thay vì darken
+                }
+            }
+
+            .add-to-cart {
+                background-color: #fff;
+                color: #008000;
+                border: 1px solid #008000;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 4px;
+                transition: all 0.3s;
+
+                &:hover {
+                    background-color: #008000;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+.book-description {
+    border-top: 1px solid #e5e5e5;
+    padding-top: 20px;
+
+    h2 {
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 14px;
+        color: #333;
+        line-height: 1.6;
+    }
+}

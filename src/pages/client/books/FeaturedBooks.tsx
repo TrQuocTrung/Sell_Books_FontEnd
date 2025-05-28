@@ -1,22 +1,16 @@
 import { getAllBooks } from "@/service/api";
 import { useEffect, useState } from "react";
 import './FeaturedBooks.scss';
+import { useNavigate } from "react-router-dom";
 
-interface IBook {
-    _id: string;
-    name: string;
-    author: string;
-    image: string;
-    description: string;
-    price?: number; // Price là tùy chọn vì dữ liệu API không có
-}
+
 
 const FeaturedBooks = () => {
     const [books, setBooks] = useState<IBook[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const urlImage = import.meta.env.VITE_BASE_URL || "http://localhost:8080"; // Fallback nếu không có VITE_BASE_URL
-
+    const navigate = useNavigate()
     useEffect(() => {
         const fetchBooks = async () => {
             setLoading(true);
@@ -25,7 +19,7 @@ const FeaturedBooks = () => {
                 const result = res.data.result;
                 console.log("Kết quả từ API:", result);
                 if (res.statusCode === 200 && Array.isArray(result)) {
-                    setBooks(result);
+                    setBooks(result.slice(0, 8));
                 } else {
                     setError("Không thể tải danh sách sách: " + (res.message || "Dữ liệu không hợp lệ"));
                 }
@@ -48,7 +42,10 @@ const FeaturedBooks = () => {
             <div className="book-grid">
                 {books.length > 0 ? (
                     books.map((book) => (
-                        <div key={book._id} className="book-item">
+                        <div key={book._id}
+                            className="book-item"
+                            onClick={() => navigate(`/books/${book._id}`)}
+                        >
                             <div className="book-image">
                                 <img
                                     src={`${urlImage}/images/books/${book.image}`}

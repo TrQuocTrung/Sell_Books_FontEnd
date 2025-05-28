@@ -26,3 +26,7 @@ export const getAllBooks = () => {
     const urlBackend = "/api/v1/books";
     return axios.get<IBookResponse>(urlBackend)
 }
+export const getBookById = (id: string) => {
+    const urlBackend = `/api/v1/books/${id}`;
+    return axios.get<IBackendRes<IBook>>(urlBackend)
+}
