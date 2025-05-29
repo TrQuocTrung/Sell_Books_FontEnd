@@ -1,0 +1,49 @@
+.listbook-container {
+    padding: 24px;
+    background-color: #f9f9f9;
+
+    .listbook-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 24px;
+        text-align: center;
+    }
+
+    .listbook-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+    }
+
+    .listbook-image {
+        height: 300px;
+        width: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+        border-bottom: 1px solid #eee;
+
+        &:hover {
+            transform: scale(1.03);
+        }
+    }
+
+    .ant-card {
+        border-radius: 10px;
+        overflow: hidden;
+        transition: box-shadow 0.3s ease;
+        background: #fff;
+
+        &:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .ant-card-meta-title {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .ant-card-meta-description {
+        color: #888;
+    }
+}

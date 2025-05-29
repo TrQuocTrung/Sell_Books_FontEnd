@@ -23,7 +23,7 @@ const CartModal = ({ open, onClose }: Props) => {
             const res = await createOrder({ items: orderItems });
 
             if (res.statusCode === 201 && res.data) {
-                message.success('Đặt hàng thành công!');
+                message.success('Đặt Hàng Thành Công');
                 clearCart();
                 onClose();
             } else {

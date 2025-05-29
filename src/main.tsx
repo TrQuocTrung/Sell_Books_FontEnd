@@ -16,6 +16,7 @@ import DetailBook from './pages/client/books/detailBook';
 import IntroductionCompany from './pages/client/introductionCompany';
 import { CartProvider } from './components/context/CartContext';
 import ProfileUser from './pages/client/profileUser';
+import ListBook from './pages/client/books/listbook';
 let router = createBrowserRouter([
   {
     path: "/",
@@ -24,6 +25,10 @@ let router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />
+      },
+      {
+        path: "/books",
+        element: <ListBook />
       },
       {
         path: "/books/:id",
