@@ -7,6 +7,7 @@ import './styles/global.scss'
 import MainSlider from "./pages/client/sidebar/MainSlider"
 import EmailFooter from "./pages/client/footerbar/emailfooter"
 import FooterLayout from 'pages/client/footerbar/footer'
+import CertificationFooter from "./pages/client/footerbar/CertificationFooter"
 
 const Layout = () => {
 
@@ -23,6 +24,7 @@ const Layout = () => {
         </div>
         <EmailFooter />
         <FooterLayout />
+        <CertificationFooter />
       </App>
     </>
   )
