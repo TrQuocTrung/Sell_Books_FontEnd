@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getBookById } from "@/service/api";
 import "./DetailBook.scss";
+import { useCart } from "@/components/context/CartContext";
+import { message } from "antd";
 
 interface IBook {
     _id: string;
@@ -21,7 +23,7 @@ const DetailBook = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const urlImage = import.meta.env.VITE_BASE_URL || "http://localhost:8080";
-
+    const { addToCart } = useCart();
     useEffect(() => {
         const fetchBook = async () => {
             setLoading(true);
@@ -45,6 +47,19 @@ const DetailBook = () => {
 
         fetchBook();
     }, [id]);
+    const handleAddToCart = () => {
+        if (!book) return;
+
+        addToCart({
+            book: book._id,
+            title: book.name,
+            quantity: 1,
+            price: book.price || 0,
+            image: `${urlImage}/images/books/${book.image}`,
+        });
+
+        message.success("Đã thêm vào giỏ hàng!")
+    };
 
     if (loading) return <div>Đang tải...</div>;
     if (error) return <div>{error}</div>;
@@ -83,8 +98,8 @@ const DetailBook = () => {
 
                     {/* Nút hành động */}
                     <div className="book-actions">
-                        <button className="buy-now">Mua ngay</button>
-                        <button className="add-to-cart">Thêm vào giỏ hàng</button>
+                        <button className="buy-now" >Mua ngay</button>
+                        <button className="add-to-cart" onClick={handleAddToCart}>Thêm vào giỏ hàng</button>
                     </div>
                 </div>
             </div>

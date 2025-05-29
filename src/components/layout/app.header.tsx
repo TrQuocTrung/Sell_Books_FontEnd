@@ -1,16 +1,18 @@
 import './app.header.scss'
 import { Input, Button, App } from "antd";
 import { SearchOutlined, PhoneOutlined, MessageOutlined, ShoppingCartOutlined } from "@ant-design/icons";
-
+import CartModal from "@/pages/client/cart/CartModal"; // đảm bảo đúng đường dẫn
 import { FaLocationArrow } from 'react-icons/fa';
 import { useCurrentApp } from '../context/app.context';
 import { Link } from "react-router";
 import { logoutApi } from '@/service/api';
+import { useCart } from '../context/CartContext';
 const Appheader = () => {
     // Sử dụng VITE_BASE_URL từ .env
     const baseUrl = import.meta.env.VITE_BASE_URL;
     const { user, setUser, isAuthenticated, setIsAuthenticated } = useCurrentApp();
     const { message } = App.useApp();
+    const { isCartOpen, setIsCartOpen, cartItems } = useCart();
     const handleLogout = async () => {
         const res = await logoutApi();
         if (res.data) {
@@ -68,10 +70,11 @@ const Appheader = () => {
                             </div>}
                     </div>
                     <div className="cart-icon">
-                        <button>
+                        <button onClick={() => setIsCartOpen(true)}>
                             <ShoppingCartOutlined />
-                            <span className="cart-count">0</span> {/* Số lượng sản phẩm, có thể thay bằng state */}
+                            <span className="cart-count">{cartItems.length}</span>
                         </button>
+                        <CartModal open={isCartOpen} onClose={() => setIsCartOpen(false)} />
                     </div>
                     {/* Thông tin liên hệ */}
                     <div className="contact-info">

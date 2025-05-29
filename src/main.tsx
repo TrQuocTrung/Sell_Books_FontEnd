@@ -14,6 +14,8 @@ import DashboardPage from './components/admin/dashboard';
 import LayoutAdmin from './components/admin/layoutAdmin';
 import DetailBook from './pages/client/books/detailBook';
 import IntroductionCompany from './pages/client/introductionCompany';
+import { CartProvider } from './components/context/CartContext';
+import ProfileUser from './pages/client/profileUser';
 let router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +28,10 @@ let router = createBrowserRouter([
       {
         path: "/books/:id",
         element: <DetailBook />
+      },
+      {
+        path: "/profile",
+        element: <ProfileUser />
       },
       {
         path: "/about",
@@ -89,7 +95,9 @@ let router = createBrowserRouter([
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <AppProvider>
-      <RouterProvider router={router} />
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
     </AppProvider>
   </StrictMode>,
 )

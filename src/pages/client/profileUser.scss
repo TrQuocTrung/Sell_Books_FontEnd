@@ -1,0 +1,154 @@
+.profile-user {
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #f5f5f5;
+}
+
+.profile-user--no-login {
+    text-align: center;
+    font-size: 18px;
+    color: #ff4d4f;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-user__card {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    margin-bottom: 24px;
+
+    .ant-card-head {
+        background: #f0f2f5;
+        border-bottom: 1px solid #e8e8e8;
+
+        .ant-card-head-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1f1f1f;
+        }
+    }
+
+    .ant-card-body {
+        padding: 24px;
+    }
+}
+
+.profile-user__card--info {
+    .profile-user__info-item {
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 12px;
+
+        strong {
+            color: #1f1f1f;
+            min-width: 120px;
+            margin-right: 16px;
+        }
+
+        span {
+            color: #595959;
+        }
+    }
+}
+
+.profile-user__card--orders {
+    .profile-user__loading {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .profile-user__orders-list {
+        .profile-user__order-item {
+            padding: 16px;
+            border-bottom: 1px solid #e8e8e8;
+            transition: background 0.2s;
+
+            &:hover {
+                background: #fafafa;
+            }
+        }
+
+        .profile-user__order-title {
+            font-size: 16px;
+            color: #1f1f1f;
+        }
+
+        .profile-user__order-description {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .profile-user__order-date,
+        .profile-user__order-total {
+            font-size: 14px;
+            color: #595959;
+            margin: 0;
+        }
+
+        .profile-user__order-items-list {
+            padding-left: 20px;
+            margin-top: 8px;
+
+            .profile-user__order-item-detail {
+                font-size: 14px;
+                color: #595959;
+                margin-bottom: 6px;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-user {
+        padding: 16px;
+    }
+
+    .profile-user--no-login {
+        font-size: 16px;
+        padding: 16px;
+    }
+
+    .profile-user__card {
+        margin-bottom: 16px;
+
+        .ant-card-head-title {
+            font-size: 18px;
+        }
+
+        .ant-card-body {
+            padding: 16px;
+        }
+    }
+
+    .profile-user__card--info {
+        .profile-user__info-item {
+            font-size: 14px;
+            margin-bottom: 10px;
+
+            strong {
+                min-width: 100px;
+                margin-right: 12px;
+            }
+        }
+    }
+
+    .profile-user__card--orders {
+        .profile-user__order-title {
+            font-size: 14px;
+        }
+
+        .profile-user__order-date,
+        .profile-user__order-total,
+        .profile-user__order-item-detail {
+            font-size: 13px;
+        }
+    }
+}
