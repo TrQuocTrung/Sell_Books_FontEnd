@@ -1,0 +1,30 @@
+$primary-color: #f4a261;
+$text-color: #333;
+$background-color: #fff;
+
+.introduction-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: $background-color;
+    color: $text-color;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+
+    h1 {
+        color: $primary-color;
+        font-size: 28px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    p {
+        font-size: 16px;
+        margin-bottom: 15px;
+        text-align: justify;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

@@ -46,7 +46,7 @@ const LoginPage = () => {
 
     return (
         <div className='form-login'>
-            <div className='main'>
+            <div className='main-login'>
                 <section className='wrapper'>
                     <div className='header-title-login'>Đăng Nhập</div>
                     <Form

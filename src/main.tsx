@@ -13,6 +13,7 @@ import ProtectedRoute from 'components/authProtected/auth';
 import DashboardPage from './components/admin/dashboard';
 import LayoutAdmin from './components/admin/layoutAdmin';
 import DetailBook from './pages/client/books/detailBook';
+import IntroductionCompany from './pages/client/introductionCompany';
 let router = createBrowserRouter([
   {
     path: "/",
@@ -28,7 +29,7 @@ let router = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />
+        element: <IntroductionCompany />
       },
       {
         path: "/checkout",

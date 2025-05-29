@@ -5,6 +5,8 @@ import SiderBarLeft from "./pages/client/sidebar/SidebarLeft"
 import './layout.scss'
 import './styles/global.scss'
 import MainSlider from "./pages/client/sidebar/MainSlider"
+import EmailFooter from "./pages/client/footerbar/emailfooter"
+import FooterLayout from 'pages/client/footerbar/footer'
 
 const Layout = () => {
 
@@ -19,6 +21,8 @@ const Layout = () => {
           </div>
           <Outlet />
         </div>
+        <EmailFooter />
+        <FooterLayout />
       </App>
     </>
   )
