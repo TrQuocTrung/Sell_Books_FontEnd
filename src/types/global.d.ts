@@ -130,4 +130,14 @@ declare global {
             quantity: number;
         }[];
     }
+    interface IReview {
+        _id: string;
+        rating: number;
+        comment: string;
+        createdAt: string;
+        updatedAt: string;
+        user: string; // user id
+        book: string; // book id
+    }
+
 }

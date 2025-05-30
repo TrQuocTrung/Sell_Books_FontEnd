@@ -109,6 +109,7 @@ const DetailBook = () => {
                 <h2>Giới thiệu sách</h2>
                 <p>{book.description}</p>
             </div>
+
         </div>
     );
 };

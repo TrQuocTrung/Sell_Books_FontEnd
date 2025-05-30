@@ -26,12 +26,16 @@ const LoginPage = () => {
         if (res.data && res.statusCode === 200) {
             localStorage.setItem('access_token', res.data.access_token);
             setIsAuthenticated(true);
-            setUser(res.data.user);
+            setUser(res.data.user as IUser);
             message.success(res.message);
             // await new Promise(resolve => setTimeout(resolve, 2000));
             setTimeout(() => {
-                navigate('/');
-            }, 2000)
+                if (res.data?.user.role.name === 'SUPER_ADMIN') {
+                    navigate('/admin');
+                } else {
+                    navigate('/');
+                }
+            }, 2000);
             // navigate('/');
             //
         } else {

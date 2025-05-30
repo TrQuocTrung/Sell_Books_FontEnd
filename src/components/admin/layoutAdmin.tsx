@@ -1,7 +1,10 @@
+import DashboardPage from "./dashboard";
+
 const LayoutAdmin = () => {
     return (
         <>
-            Layout Admin
+            <DashboardPage />;
+
         </>
     )
 }

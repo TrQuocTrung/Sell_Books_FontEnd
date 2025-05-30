@@ -32,6 +32,11 @@ export const getAllBooks = (query: Record<string, any> = {}) => {
     const searchParams = new URLSearchParams(query).toString();
     return axios.get(`/api/v1/books?${searchParams}`);
 };
+//review
+export const getReviewById = (id: string) => {
+    const urlBackend = `/api/v1/review/${id}`;
+    return axios.get<IBackendRes<IReview>>(urlBackend);
+};
 export const getBookById = (id: string) => {
     const urlBackend = `/api/v1/books/${id}`;
     return axios.get<IBackendRes<IBook>>(urlBackend)
