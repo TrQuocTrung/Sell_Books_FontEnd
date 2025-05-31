@@ -7,6 +7,7 @@ import { App, Button, Dropdown } from 'antd';
 import { useRef, useState } from 'react';
 import DetailUser from './detail.user';
 import CreateUser from './create.user';
+import UpdateUser from './update.user';
 
 export const waitTimePromise = async (time: number = 100) => {
     return new Promise((resolve) => {
@@ -39,6 +40,8 @@ const ManagerUsers = () => {
     const [openDrawer, setOpenDrawer] = useState(false);
     const [selectedUser, setSelectedUser] = useState<IUserTable | null>(null);
     const [isOpen, setIsOpen] = useState(false)
+    const [updateUserOpen, setUpdateUserOpen] = useState(false);
+    const [userToUpdate, setUserToUpdate] = useState<IUserTable | null>(null);
     const columns: ProColumns<IUserTable>[] = [
         {
             dataIndex: 'index',
@@ -113,12 +116,16 @@ const ManagerUsers = () => {
         {
             title: 'Action',
             hideInSearch: true,
-            render() {
+            render(_, record) {
                 return (
                     <>
                         <EditTwoTone
                             twoToneColor="#f57800"
                             style={{ cursor: 'pointer', marginRight: 15 }}
+                            onClick={() => {
+                                setUserToUpdate(record);
+                                setUpdateUserOpen(true);
+                            }}
                         />
                         <DeleteTwoTone
                             twoToneColor="#ff4d4f"
@@ -231,6 +238,14 @@ const ManagerUsers = () => {
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
+            {updateUserOpen && userToUpdate && (
+                <UpdateUser
+                    updateUserOpen={updateUserOpen}
+                    setUpdateUserOpen={setUpdateUserOpen}
+                    userToUpdate={userToUpdate}
+                    setUserToUpdate={setUserToUpdate}
+                />
+            )}
         </>
     );
 };
