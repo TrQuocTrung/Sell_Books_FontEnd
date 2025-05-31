@@ -1,13 +1,14 @@
-import { getAlluserPagesinate } from '@/service/api';
+import { getAlluserPagesinate, deleteUserApi } from '@/service/api';
 import { dateRangeValidate } from '@/service/helper';
 import { DeleteTwoTone, EditTwoTone, EllipsisOutlined, PlusOutlined } from '@ant-design/icons';
 import type { ActionType, ProColumns } from '@ant-design/pro-components';
 import { ProTable } from '@ant-design/pro-components';
-import { App, Button, Dropdown } from 'antd';
+import { App, Button, Dropdown, Popconfirm } from 'antd';
 import { useRef, useState } from 'react';
 import DetailUser from './detail.user';
 import CreateUser from './create.user';
 import UpdateUser from './update.user';
+
 
 export const waitTimePromise = async (time: number = 100) => {
     return new Promise((resolve) => {
@@ -30,7 +31,19 @@ type TSearch = {
 
 
 const ManagerUsers = () => {
+    const { message } = App.useApp()
     const actionRef = useRef<ActionType | null>(null);
+    // Hàm xóa user
+    const handleDeleteUser = async (id: string) => {
+        try {
+            await deleteUserApi(id);
+            message.success('Xóa người dùng thành công');
+            // Reload lại bảng sau khi xóa thành công
+            actionRef.current?.reload();
+        } catch (error) {
+            message.error('Xóa người dùng thất bại');
+        }
+    };
     const [meta, setMeta] = useState({
         current: 1,
         pageSize: 5,
@@ -127,11 +140,18 @@ const ManagerUsers = () => {
                                 setUpdateUserOpen(true);
                             }}
                         />
-                        <DeleteTwoTone
-                            twoToneColor="#ff4d4f"
-                            style={{ cursor: 'pointer' }}
-
-                        />
+                        <Popconfirm
+                            title="Bạn có chắc chắn muốn xóa người dùng này?"
+                            onConfirm={() => handleDeleteUser(record._id)}
+                            okText="Xóa"
+                            cancelText="Hủy"
+                            placement="topRight"
+                        >
+                            <DeleteTwoTone
+                                twoToneColor="#ff4d4f"
+                                style={{ cursor: 'pointer' }}
+                            />
+                        </Popconfirm>
                     </>
                 )
             },

@@ -8,6 +8,10 @@ export const registerApi = (user: IRegister) => {
     const urlBackend = "api/v1/auth/register"
     return axios.post<IBackendRes<IRegister>>(urlBackend, user)
 }
+export const logoutApi = () => {
+    const urlBackend = `api/v1/auth/logout`
+    return axios.post<IBackendRes<null>>(urlBackend)
+}
 //User
 export const getUserApi = () => {
     const urlBackend = "/api/v1/auth/account"
@@ -17,10 +21,7 @@ export const getAlluserPagesinate = (query: string) => {
     const urlBackend = `/api/v1/users/?${query}`
     return axios.get<IBackendRes<IModelPaginate<IUserTable>>>(urlBackend)
 }
-export const logoutApi = () => {
-    const urlBackend = `api/v1/auth/logout`
-    return axios.post<IBackendRes<null>>(urlBackend)
-}
+
 export const updateUserApi = (id: string, updateUserDto: any) => {
     const urlBackend = `/api/v1/users/${id}`;
     return axios.patch<IBackendRes<any>>(urlBackend, updateUserDto);
@@ -28,6 +29,10 @@ export const updateUserApi = (id: string, updateUserDto: any) => {
 export const createUser = (data: IUserForm) => {
     const urlBackend = `/api/v1/users`;
     return axios.post<IBackendRes<IUserForm>>(urlBackend, data);
+}
+export const deleteUserApi = (id: string) => {
+    const urlBackend = `/api/v1/users/${id}`
+    return axios.delete<IBackendRes<IUserForm>>(urlBackend);
 }
 //Categories
 export const getAllCategories = () => {

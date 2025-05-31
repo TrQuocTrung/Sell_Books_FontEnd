@@ -1,4 +1,4 @@
-import { Button, Drawer } from "antd";
+import { Drawer } from "antd";
 import './detail.user.scss'
 import dayjs from "dayjs";
 import { FORMATE_DATE_VN } from "@/service/helper";

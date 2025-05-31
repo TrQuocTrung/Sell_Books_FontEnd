@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
     BookOutlined,
     HomeOutlined,
@@ -11,16 +10,18 @@ import {
 import { Button, Layout, Menu, theme, Space, Typography, message } from 'antd';
 import { logoutApi } from '@/service/api';
 import { useCurrentApp } from '../context/app.context';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 const { Header, Sider, Content } = Layout;
 const { Text } = Typography;
+
 const LayoutAdmin = () => {
     const [collapsed, setCollapsed] = useState(false);
+    const navigate = useNavigate(); // ✅ Hook được gọi đúng chỗ
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
-    const { user, setUser, setIsAuthenticated } = useCurrentApp(); // Giả định setIsAuthenticated cũng có trong useCurrentApp
+    const { user, setUser, setIsAuthenticated } = useCurrentApp();
 
     const handleLogout = async () => {
         const res = await logoutApi();
@@ -36,38 +37,39 @@ const LayoutAdmin = () => {
 
     return (
         <Layout>
-            <Sider trigger={null} collapsible collapsed={collapsed} theme="light" width={250} collapsedWidth={100} >
+            <Sider trigger={null} collapsible collapsed={collapsed} theme="light" width={250} collapsedWidth={100}>
                 <div className="demo-logo-vertical" />
                 <h1 style={{ textAlign: 'center', padding: '10px' }}>Admin</h1>
                 <Menu
+                    onClick={({ key }) => {
+                        switch (key) {
+                            case '1':
+                                navigate('/admin/dashboard');
+                                break;
+                            case '2':
+                                navigate('/admin/users');
+                                break;
+                            case '3':
+                                navigate('/admin/books');
+                                break;
+                            case '4':
+                                navigate('/admin/orders');
+                                break;
+                            case '5':
+                                navigate('/admin/reviews');
+                                break;
+                            default:
+                                break;
+                        }
+                    }}
                     mode="inline"
                     defaultSelectedKeys={['1']}
                     items={[
-                        {
-                            key: '1',
-                            icon: <HomeOutlined />,
-                            label: 'Dashboard',
-                        },
-                        {
-                            key: '2',
-                            icon: <UserOutlined />,
-                            label: 'Quản lý Người dùng',
-                        },
-                        {
-                            key: '3',
-                            icon: <BookOutlined />,
-                            label: 'Quản lý Sách',
-                        },
-                        {
-                            key: '4',
-                            icon: <ShoppingCartOutlined />,
-                            label: 'Quản lý Đơn hàng',
-                        },
-                        {
-                            key: '5',
-                            icon: <ShoppingCartOutlined />,
-                            label: 'Quản lý Review',
-                        },
+                        { key: '1', icon: <HomeOutlined />, label: 'Dashboard' },
+                        { key: '2', icon: <UserOutlined />, label: 'Quản lý Người dùng' },
+                        { key: '3', icon: <BookOutlined />, label: 'Quản lý Sách' },
+                        { key: '4', icon: <ShoppingCartOutlined />, label: 'Quản lý Đơn hàng' },
+                        { key: '5', icon: <ShoppingCartOutlined />, label: 'Quản lý Review' },
                     ]}
                 />
             </Sider>
@@ -101,7 +103,6 @@ const LayoutAdmin = () => {
                 </Header>
                 <Content
                     style={{
-                        // margin: '20px 16px',
                         padding: 24,
                         minHeight: 280,
                         background: colorBgContainer,
@@ -112,6 +113,7 @@ const LayoutAdmin = () => {
                 </Content>
             </Layout>
         </Layout>
-    )
-}
+    );
+};
+
 export default LayoutAdmin;
