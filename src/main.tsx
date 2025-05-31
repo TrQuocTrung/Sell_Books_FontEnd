@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from '@/layout';
-import About from 'pages/client/about';
 import RegisterPage from 'pages/client/auth/register';
 import LoginPage from 'pages/client/auth/login';
 import 'styles/global.scss'
@@ -20,8 +19,7 @@ import ListBook from './pages/client/books/listbook';
 import ManagerBooks from './pages/admin/manager.books';
 import { ConfigProvider } from 'antd';
 import viVN from 'antd/locale/vi_VN';
-import ManagerUser from './pages/admin/manage.user';
-import ManagerUsers from './pages/admin/manage.user';
+import ManagerUsers from './pages/admin/managerUser/manage.user';
 
 let router = createBrowserRouter([
   {
@@ -114,7 +112,6 @@ createRoot(document.getElementById('root')!).render(
       <CartProvider>
         <ConfigProvider locale={viVN}>
           <RouterProvider router={router} />
-
         </ConfigProvider>
       </CartProvider>
     </AppProvider>

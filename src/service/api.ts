@@ -13,8 +13,8 @@ export const getUserApi = () => {
     const urlBackend = "/api/v1/auth/account"
     return axios.get<IBackendRes<IFetchAccount>>(urlBackend)
 }
-export const getAlluserPagesinate = (current: number, pageSize: number) => {
-    const urlBackend = `/api/v1/users/?current=${current}&pageSize=${pageSize}`
+export const getAlluserPagesinate = (query: string) => {
+    const urlBackend = `/api/v1/users/?${query}`
     return axios.get<IBackendRes<IModelPaginate<IUserTable>>>(urlBackend)
 }
 export const logoutApi = () => {
@@ -25,12 +25,15 @@ export const updateUserApi = (id: string, updateUserDto: any) => {
     const urlBackend = `/api/v1/users/${id}`;
     return axios.patch<IBackendRes<any>>(urlBackend, updateUserDto);
 };
+export const createUser = (data: IUserForm) => {
+    const urlBackend = `/api/v1/users`;
+    return axios.post<IBackendRes<IUserForm>>(urlBackend, data);
+}
 //Categories
 export const getAllCategories = () => {
     const urlBackend = "/api/v1/category";
     return axios.get<ICategoryResponse>(urlBackend)
 }
-
 //Books
 export const getAllBooks = (query: Record<string, any> = {}) => {
     const searchParams = new URLSearchParams(query).toString();
@@ -53,3 +56,9 @@ export const createOrder = (data: ICreateOrderPayload) => {
 export const getMyOrders = () => {
     return axios.get<IBackendRes<IOrder[]>>('/api/v1/order/my-orders');
 };
+
+//Role
+export const getallRole = () => {
+    const urlBackend = `/api/v1/role`;
+    return axios.get<IModelPaginate<IRole>>(urlBackend);
+}

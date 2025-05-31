@@ -61,6 +61,24 @@ declare global {
             age?: number;
         };
     }
+    interface IRole {
+        _id: string;
+        name: string;
+    }
+
+    interface IUserForm {
+        _id: string;
+        email: string;
+        username: string;
+        role: string
+        profile?: {
+            fullname?: string;
+            address?: string;
+            gender?: string;
+            phone?: number;
+            age?: number;
+        };
+    }
 
     interface IFetchAccount {
         user: IUser;
