@@ -139,5 +139,20 @@ declare global {
         user: string; // user id
         book: string; // book id
     }
-
+    interface IUserTable {
+        _id: string,
+        username: string,
+        email: string,
+        role: string,
+        profile: {
+            fullname: string,
+            address: string
+            gender: string,
+            phone: string,
+            age: number
+        },
+        isDeleted: boolean,
+        createdAt: Date,
+        updatedAt: Date
+    }
 }

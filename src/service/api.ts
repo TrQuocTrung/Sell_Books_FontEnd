@@ -13,8 +13,12 @@ export const getUserApi = () => {
     const urlBackend = "/api/v1/auth/account"
     return axios.get<IBackendRes<IFetchAccount>>(urlBackend)
 }
+export const getAlluserPagesinate = (current: number, pageSize: number) => {
+    const urlBackend = `/api/v1/users/?current=${current}&pageSize=${pageSize}`
+    return axios.get<IBackendRes<IModelPaginate<IUserTable>>>(urlBackend)
+}
 export const logoutApi = () => {
-    const urlBackend = "api/v1/auth/logout"
+    const urlBackend = `api/v1/auth/logout`
     return axios.post<IBackendRes<null>>(urlBackend)
 }
 export const updateUserApi = (id: string, updateUserDto: any) => {

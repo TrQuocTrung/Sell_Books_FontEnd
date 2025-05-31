@@ -17,6 +17,12 @@ import IntroductionCompany from './pages/client/introductionCompany';
 import { CartProvider } from './components/context/CartContext';
 import ProfileUser from './pages/client/profileUser';
 import ListBook from './pages/client/books/listbook';
+import ManagerBooks from './pages/admin/manager.books';
+import { ConfigProvider } from 'antd';
+import viVN from 'antd/locale/vi_VN';
+import ManagerUser from './pages/admin/manage.user';
+import ManagerUsers from './pages/admin/manage.user';
+
 let router = createBrowserRouter([
   {
     path: "/",
@@ -70,8 +76,13 @@ let router = createBrowserRouter([
       },
       {
 
+        path: "users",
+        element: <ManagerUsers />
+      },
+      {
+
         path: "books",
-        element: <div></div>
+        element: <ManagerBooks />
       },
       {
         path: "oders",
@@ -101,7 +112,10 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <AppProvider>
       <CartProvider>
-        <RouterProvider router={router} />
+        <ConfigProvider locale={viVN}>
+          <RouterProvider router={router} />
+
+        </ConfigProvider>
       </CartProvider>
     </AppProvider>
   </StrictMode>,
