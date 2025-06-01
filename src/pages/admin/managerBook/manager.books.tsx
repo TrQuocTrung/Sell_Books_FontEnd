@@ -7,6 +7,7 @@ import { useRef, useState } from 'react';
 import { getAllBooks } from '@/service/api';
 import DetailBook from './detail.book';
 import CreateBook from './create.book';
+import UpdateBook from './updatedate.book';
 
 
 const ManagerBooks = () => {
@@ -15,6 +16,7 @@ const ManagerBooks = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [isSelectedBook, setIsSelectedBook] = useState<IBook | null>(null)
     const [isOpenCreate, setIsOpenCeate] = useState(false)
+    const [isOpenUpdate, setIsOpenUpdate] = useState(false)
     const [meta, setMeta] = useState({
         current: 1,
         pageSize: 5,
@@ -88,7 +90,8 @@ const ManagerBooks = () => {
                             twoToneColor="#f57800"
                             style={{ cursor: 'pointer', marginRight: 15 }}
                             onClick={() => {
-
+                                setIsOpenUpdate(true);
+                                setIsSelectedBook(record)
                             }}
                         />
                         <Popconfirm
@@ -200,6 +203,12 @@ const ManagerBooks = () => {
             <CreateBook
                 isOpenCreate={isOpenCreate}
                 setIsOpenCeate={setIsOpenCeate}
+            />
+            <UpdateBook
+                isOpenUpdate={isOpenUpdate}
+                setIsOpenUpdate={setIsOpenUpdate}
+                isSelectedBook={isSelectedBook}
+                setIsSelectedBook={setIsSelectedBook}
             />
         </>
     );

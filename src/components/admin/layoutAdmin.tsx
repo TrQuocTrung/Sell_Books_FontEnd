@@ -96,7 +96,7 @@ const LayoutAdmin = () => {
                     />
                     <Space>
                         <Text style={{ marginRight: 16 }}>
-                            {user ? user.username || `I'm user` : `I'm user`}
+                            {user ? user.username || `Xin Chào Admin!` : `Xin Chào Admin!`}
                         </Text>
                         <Button type="link" onClick={handleLogout}>Đăng xuất</Button>
                     </Space>

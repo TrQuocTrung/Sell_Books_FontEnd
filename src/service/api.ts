@@ -53,6 +53,10 @@ export const createBookApi = (data: FormData) => {
         },
     });
 };
+export const updateBookApi = (id: string, updateUserDto: any) => {
+    const urlBackend = `/api/v1/books/${id}`;
+    return axios.patch<IBackendRes<any>>(urlBackend, updateUserDto);
+};
 //review
 export const getReviewById = (id: string) => {
     const urlBackend = `/api/v1/review/${id}`;
