@@ -9,7 +9,7 @@ const SiderBarLeft = () => {
     useEffect(() => {
         const fetchCategory = async () => {
             const res = await getAllCategories()
-            setIsCategory(res.data?.result ?? [])
+            setIsCategory(res.data?.results ?? [])
         }
         fetchCategory()
     }, [])

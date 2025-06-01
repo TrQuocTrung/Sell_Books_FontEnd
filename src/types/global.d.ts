@@ -93,7 +93,7 @@ declare global {
         statusCode: number;
         message: string;
         data: {
-            result: ICategory[];
+            results: ICategory[];
         };
     }
 
@@ -113,17 +113,35 @@ declare global {
         createdAt: Date;
         updatedAt: Date;
     }
+    interface IBookForm {
+        name: string;
+        author: string;
+        fileUpload: string;
+        description: string;
+        price: number;
+        stock: number;
+        soldQuantity: number;
+        categories: string[];
+    }
     interface IBookResponse {
         statusCode: number;
         message: string;
         data: {
-            meta: {
-                current: number;
-                pageSize: number;
-                pages: number;
-                total: number;
+            name: string;
+            author: string;
+            image: string;
+            price: number;
+            stock: number;
+            soldQuantity: number;
+            description: string;
+            categories: string[];
+            _id: string;
+            createdAt: string;
+            updatedAt: string;
+            createdBy: {
+                _id: string;
+                email: string;
             };
-            result: IBook[];
         };
     }
 

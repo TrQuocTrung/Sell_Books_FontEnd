@@ -38,12 +38,20 @@ export const deleteUserApi = (id: string) => {
 //Categories
 export const getAllCategories = () => {
     const urlBackend = "/api/v1/category";
-    return axios.get<ICategoryResponse>(urlBackend)
+    return axios.get<IBackendRes<IModelPaginate<ICategory>>>(urlBackend)
 }
 //Books
 const urlbackendBook = '/api/v1/books'
 export const getAllBooks = (query: string | null) => {
-    return axios.get<IBackendRes<IModelPaginate<IBook>>>(urlbackendBook)
+    const urlquery = `/api/v1/books?${query}`
+    return axios.get<IBackendRes<IModelPaginate<IBook>>>(urlquery)
+};
+export const createBookApi = (data: FormData) => {
+    return axios.post(urlbackendBook, data, {
+        headers: {
+            folder_type: 'books',
+        },
+    });
 };
 //review
 export const getReviewById = (id: string) => {

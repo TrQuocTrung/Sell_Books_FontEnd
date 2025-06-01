@@ -1,11 +1,12 @@
 
 import type { ActionType, ProColumns } from '@ant-design/pro-components';
 import { ProTable } from '@ant-design/pro-components';
-import { App, Button, Dropdown } from 'antd';
-import { EllipsisOutlined, PlusOutlined } from '@ant-design/icons';
+import { App, Button, Dropdown, Popconfirm } from 'antd';
+import { DeleteTwoTone, EditTwoTone, EllipsisOutlined, PlusOutlined } from '@ant-design/icons';
 import { useRef, useState } from 'react';
 import { getAllBooks } from '@/service/api';
 import DetailBook from './detail.book';
+import CreateBook from './create.book';
 
 
 const ManagerBooks = () => {
@@ -13,6 +14,7 @@ const ManagerBooks = () => {
     const actionRef = useRef<ActionType | null>(null);
     const [isOpen, setIsOpen] = useState(false)
     const [isSelectedBook, setIsSelectedBook] = useState<IBook | null>(null)
+    const [isOpenCreate, setIsOpenCeate] = useState(false)
     const [meta, setMeta] = useState({
         current: 1,
         pageSize: 5,
@@ -76,6 +78,36 @@ const ManagerBooks = () => {
             valueType: 'dateTime',
             hideInSearch: true,
         },
+        {
+            title: 'Action',
+            hideInSearch: true,
+            render(_, record) {
+                return (
+                    <>
+                        <EditTwoTone
+                            twoToneColor="#f57800"
+                            style={{ cursor: 'pointer', marginRight: 15 }}
+                            onClick={() => {
+
+                            }}
+                        />
+                        <Popconfirm
+                            title="Bạn có chắc chắn muốn xóa người dùng này?"
+
+                            okText="Xóa"
+                            cancelText="Hủy"
+                            placement="topRight"
+                        >
+                            <DeleteTwoTone
+                                twoToneColor="#ff4d4f"
+                                style={{ cursor: 'pointer' }}
+                            />
+                        </Popconfirm>
+                    </>
+                )
+            },
+        }
+
     ];
 
     return (
@@ -141,7 +173,7 @@ const ManagerBooks = () => {
                         key="button"
                         icon={<PlusOutlined />}
                         type="primary"
-                        onClick={() => message.info('Mở form thêm sách (chưa làm)')}
+                        onClick={() => setIsOpenCeate(true)}
                     >
                         Thêm sách
                     </Button>,
@@ -164,6 +196,10 @@ const ManagerBooks = () => {
                 setIsOpen={setIsOpen}
                 isSelectedBook={isSelectedBook}
                 setIsSelectedBook={setIsSelectedBook}
+            />
+            <CreateBook
+                isOpenCreate={isOpenCreate}
+                setIsOpenCeate={setIsOpenCeate}
             />
         </>
     );
