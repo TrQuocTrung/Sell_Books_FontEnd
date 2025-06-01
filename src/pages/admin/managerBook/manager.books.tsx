@@ -4,10 +4,10 @@ import { ProTable } from '@ant-design/pro-components';
 import { App, Button, Dropdown, Popconfirm } from 'antd';
 import { DeleteTwoTone, EditTwoTone, EllipsisOutlined, PlusOutlined } from '@ant-design/icons';
 import { useRef, useState } from 'react';
-import { getAllBooks } from '@/service/api';
+import { deleteBookApi, getAllBooks } from '@/service/api';
 import DetailBook from './detail.book';
 import CreateBook from './create.book';
-import UpdateBook from './updatedate.book';
+import UpdateBook from './update.book';
 
 
 const ManagerBooks = () => {
@@ -23,7 +23,18 @@ const ManagerBooks = () => {
         pages: 0,
         total: 0,
     });
+    const handleDeletBook = async (id: string) => {
+        try {
+            await deleteBookApi(id);;
+            message.success('Xóa Sách thành công');
+            // Reload lại bảng sau khi xóa thành công
+            actionRef.current?.reload();
+        } catch (error) {
+            message.error('Xóa Sách thất bại');
+        }
 
+
+    }
     const columns: ProColumns<IBook>[] = [
 
         {
@@ -100,6 +111,7 @@ const ManagerBooks = () => {
                             okText="Xóa"
                             cancelText="Hủy"
                             placement="topRight"
+                            onConfirm={() => handleDeletBook(record._id)}
                         >
                             <DeleteTwoTone
                                 twoToneColor="#ff4d4f"
