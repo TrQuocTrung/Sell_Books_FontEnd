@@ -88,7 +88,7 @@ const UpdateBook = (props: IProps) => {
         });
 
         if (fileList.length > 0 && fileList[0].originFileObj) {
-            formData.append('image', fileList[0].originFileObj);
+            formData.append('fileUpload', fileList[0].originFileObj);
         }
 
         setUploading(true);
@@ -113,6 +113,7 @@ const UpdateBook = (props: IProps) => {
             open={isOpenUpdate}
             onCancel={handleCancel}
             footer={null}
+            width="1000px"
         >
             <Form form={form} layout="vertical" onFinish={handleSubmit}>
                 <Form.Item name="name" label="Tên sách" rules={[{ required: true }]}>

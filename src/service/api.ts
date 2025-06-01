@@ -1,4 +1,4 @@
-import { data } from 'react-router-dom'
+
 import axios from './axios.customize'
 //Auth
 export const loginApi = (username: string, password: string) => {
@@ -53,10 +53,19 @@ export const createBookApi = (data: FormData) => {
         },
     });
 };
-export const updateBookApi = (id: string, updateUserDto: any) => {
+export const updateBookApi = (id: string, data: any) => {
     const urlBackend = `/api/v1/books/${id}`;
-    return axios.patch<IBackendRes<any>>(urlBackend, updateUserDto);
+    return axios.patch(urlBackend, data, {
+        headers: {
+
+            folder_type: 'books',
+        },
+    });
 };
+export const deleteBookApi = (id: string) => {
+    const urlBackend = `/api/v1/books/${id}`;
+    return axios.delete(urlBackend)
+}
 //review
 export const getReviewById = (id: string) => {
     const urlBackend = `/api/v1/review/${id}`;
