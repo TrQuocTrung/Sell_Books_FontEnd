@@ -184,7 +184,6 @@ const ManagerUsers = () => {
                             query += `&sort=${sortOrder}`;
                         }
                     }
-                    console.log("check query", query)
                     const res = await getAlluserPagesinate(query)
                     await waitTime(2000);
                     if (res.data) {

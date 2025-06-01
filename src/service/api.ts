@@ -1,3 +1,4 @@
+import { data } from 'react-router-dom'
 import axios from './axios.customize'
 //Auth
 export const loginApi = (username: string, password: string) => {
@@ -40,9 +41,9 @@ export const getAllCategories = () => {
     return axios.get<ICategoryResponse>(urlBackend)
 }
 //Books
-export const getAllBooks = (query: Record<string, any> = {}) => {
-    const searchParams = new URLSearchParams(query).toString();
-    return axios.get(`/api/v1/books?${searchParams}`);
+const urlbackendBook = '/api/v1/books'
+export const getAllBooks = (query: string | null) => {
+    return axios.get<IBackendRes<IModelPaginate<IBook>>>(urlbackendBook)
 };
 //review
 export const getReviewById = (id: string) => {

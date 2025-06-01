@@ -107,8 +107,12 @@ declare global {
         stock: number;
         soldQuantity: number;
         categories: ICategory[];
+        createdBy: IUser;
+        isDeleted: boolean;
+        deletedAt: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
     }
-
     interface IBookResponse {
         statusCode: number;
         message: string;

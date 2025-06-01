@@ -16,7 +16,7 @@ import IntroductionCompany from './pages/client/introductionCompany';
 import { CartProvider } from './components/context/CartContext';
 import ProfileUser from './pages/client/profileUser';
 import ListBook from './pages/client/books/listbook';
-import ManagerBooks from './pages/admin/manager.books';
+import ManagerBooks from './pages/admin/managerBook/manager.books';
 import { ConfigProvider } from 'antd';
 import viVN from 'antd/locale/vi_VN';
 import ManagerUsers from './pages/admin/managerUser/manage.user';

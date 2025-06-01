@@ -15,8 +15,8 @@ const FeaturedBooks = () => {
         const fetchBooks = async () => {
             setLoading(true);
             try {
-                const res = await getAllBooks();
-                const result = res.data.result;
+                const res = await getAllBooks('');
+                const result = res.data?.results;
                 console.log("Kết quả từ API:", result);
                 if (res.statusCode === 200 && Array.isArray(result)) {
                     setBooks(result.slice(0, 8));
