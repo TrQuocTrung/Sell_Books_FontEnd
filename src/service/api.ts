@@ -68,8 +68,8 @@ export const deleteBookApi = (id: string) => {
 }
 //review
 export const getReviewById = (id: string) => {
-    const urlBackend = `/api/v1/review/${id}`;
-    return axios.get<IBackendRes<IReview>>(urlBackend);
+    const urlBackend = `/api/v1/review/book/${id}`;
+    return axios.get<IBackendRes<IReview[]>>(urlBackend);
 };
 export const getBookById = (id: string) => {
     const urlBackend = `/api/v1/books/${id}`;
