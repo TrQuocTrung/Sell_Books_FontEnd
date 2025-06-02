@@ -185,8 +185,9 @@ declare global {
         comment: string;
         createdAt: string;
         updatedAt: string;
-        user: string; // user id
-        book: string; // book id
+        book: IBook;
+        createdBy: IUser;
+        updatedBy: string | IUser;
     }
     interface IUserTable {
         _id: string,

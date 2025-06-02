@@ -75,7 +75,10 @@ export const getBookById = (id: string) => {
     const urlBackend = `/api/v1/books/${id}`;
     return axios.get<IBackendRes<IBook>>(urlBackend)
 }
-
+export const getAllReview = (query: string | null) => {
+    const urlQuery = `/api/v1/review${query ? `?${query}` : ''}`;
+    return axios.get<IBackendRes<IModelPaginate<IReview>>>(urlQuery);
+};
 //Order
 export const createOrder = (data: ICreateOrderPayload) => {
     const urlBackend = `/api/v1/order`;
