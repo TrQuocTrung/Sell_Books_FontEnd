@@ -68,6 +68,7 @@ let router = createBrowserRouter([
     children: [
       {
         index: true,
+        path: "dashboard",
         element: (
           <ProtectedRoute>
             <DashboardPage />
