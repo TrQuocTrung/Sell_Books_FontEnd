@@ -88,7 +88,20 @@ export const getallOrderApi = (query: string) => {
     const urlBackend = `/api/v1/order/?${query}`;
     return axios.get<IBackendRes<IModelPaginate<IOrder>>>(urlBackend);
 }
+export const updateOrderApi = (id: string, data: UpdateOrderItemsDto) => {
+    const urlBackend = `/api/v1/order/${id}/items`;
+    return axios.patch<IBackendRes<IOrder>>(urlBackend, data);
+}
 
+export const updateOrderStatusApi = (id: string, data: UpdateOrderStatusDto) => {
+    const urlBackend = `/api/v1/order/${id}/status`;
+    return axios.patch<IBackendRes<IOrder>>(urlBackend, data);
+}
+export const deleteOrderApi = (id: string) => {
+    const urlBackend = `/api/v1/order/${id}`;
+    return axios.patch<IBackendRes<IOrder>>(urlBackend);
+
+}
 //Role
 export const getallRole = () => {
     const urlBackend = `/api/v1/role`;

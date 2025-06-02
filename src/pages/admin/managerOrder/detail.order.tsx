@@ -9,7 +9,7 @@ interface IProps {
 }
 
 const DetailOrder = (props: IProps) => {
-    const { isselectedOrder, setisselectedOrder, isOpenDetail, setIsOpenDetail } = props;
+    const { isselectedOrder, isOpenDetail, setIsOpenDetail } = props;
 
     const handleClose = () => {
         setIsOpenDetail(false);

@@ -1,16 +1,19 @@
 import type { ActionType, ProColumns } from '@ant-design/pro-components';
 import { ProTable } from '@ant-design/pro-components';
 import { App, Button, Dropdown, Popconfirm, Tag } from 'antd';
-import { DeleteTwoTone, EllipsisOutlined } from '@ant-design/icons';
+import { DeleteTwoTone, EditTwoTone, EllipsisOutlined } from '@ant-design/icons';
 import { useRef, useState } from 'react';
-import { getallOrderApi } from '@/service/api';
+import { deleteOrderApi, getallOrderApi } from '@/service/api';
 import DetailOrder from './detail.order';
+import UpdateOrder from './update.order';
 
 const ManagerOrders = () => {
     const { message } = App.useApp();
     const actionRef = useRef<ActionType | null>(null);
     const [isselectedOrder, setisselectedOrder] = useState<IOrder | null>(null)
     const [isOpenDetail, setIsOpenDetail] = useState(false)
+    const [isOpenUpdate, setIsOpenUpdate] = useState(false)
+
     const [meta, setMeta] = useState({
         current: 1,
         pageSize: 5,
@@ -20,10 +23,11 @@ const ManagerOrders = () => {
 
     const handleDeleteOrder = async (id: string) => {
         try {
-            // gọi API xóa nếu có
-            // await deleteOrderApi(id);
-            message.success('Xóa đơn hàng thành công');
-            actionRef.current?.reload();
+            const res = await deleteOrderApi(id);
+            if (res.statusCode === 200) {
+                message.success('Xóa đơn hàng thành công');
+                actionRef.current?.reload();
+            }
         } catch (error) {
             message.error('Xóa đơn hàng thất bại');
         }
@@ -85,6 +89,14 @@ const ManagerOrders = () => {
             hideInSearch: true,
             render: (_, record) => (
                 <>
+                    <EditTwoTone
+                        twoToneColor="#f57800"
+                        style={{ cursor: 'pointer', marginRight: 15 }}
+                        onClick={() => {
+                            setisselectedOrder(record);
+                            setIsOpenUpdate(true);
+                        }}
+                    />
                     <Popconfirm
                         title="Bạn có chắc chắn muốn xóa đơn hàng này?"
                         okText="Xóa"
@@ -106,7 +118,7 @@ const ManagerOrders = () => {
                 columns={columns}
                 actionRef={actionRef}
                 cardBordered
-                request={async (params, sort) => {
+                request={async (params) => {
                     const query = `current=${params.current}&pageSize=${params.pageSize}`;
                     try {
                         const res = await getallOrderApi(query);
@@ -162,6 +174,13 @@ const ManagerOrders = () => {
                 setisselectedOrder={setisselectedOrder}
                 isOpenDetail={isOpenDetail}
                 setIsOpenDetail={setIsOpenDetail}
+            />
+            <UpdateOrder
+                isselectedOrder={isselectedOrder}
+                setisselectedOrder={setisselectedOrder}
+                isOpenUpdate={isOpenUpdate}
+                setIsOpenUpdate={setIsOpenUpdate}
+                actionRef={actionRef}
             />
         </>
     );

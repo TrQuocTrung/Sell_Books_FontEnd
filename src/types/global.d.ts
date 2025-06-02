@@ -170,6 +170,15 @@ declare global {
             quantity: number;
         }[];
     }
+    interface UpdateOrderItemsDto {
+        items: {
+            book: string;
+            quantity: number;
+        }[];
+    }
+    interface UpdateOrderStatusDto {
+        status: 'pending' | 'confirmed' | 'shipped' | 'delivered' | 'cancelled' | 'complete';
+    }
     interface IReview {
         _id: string;
         rating: number;
