@@ -4,11 +4,14 @@ import { App, Button, Dropdown, Popconfirm } from 'antd';
 import { DeleteTwoTone, EditTwoTone, EllipsisOutlined } from '@ant-design/icons';
 import { useRef, useState } from 'react';
 import { getAllReview } from '@/service/api';
+import DetailReview from './detail.review';
 
 const ManagerReview = () => {
     const { message } = App.useApp();
     const actionRef = useRef<ActionType | null>(null);
-
+    const [isSelectReview, setIsSelectReview] = useState<IReview | null>(null)
+    const [isOpenDetail, setIsOpenDetail] = useState(false)
+    const [isOpenUpdateReview, setisOpenUpdateReview] = useState(false)
     const [meta, setMeta] = useState({
         current: 1,
         pageSize: 5,
@@ -28,7 +31,8 @@ const ManagerReview = () => {
             render: (text, record) => (
                 <a
                     onClick={() => {
-
+                        setIsSelectReview(record)
+                        setIsOpenDetail(true)
                     }}
                 >
                     {text}
@@ -71,6 +75,7 @@ const ManagerReview = () => {
                         twoToneColor="#f57800"
                         style={{ cursor: 'pointer', marginRight: 15 }}
                         onClick={() => {
+
 
                         }}
                     />
@@ -142,6 +147,10 @@ const ManagerReview = () => {
                         <Button icon={<EllipsisOutlined />} />
                     </Dropdown>,
                 ]}
+            />
+            <DetailReview
+                isSelectReview={isSelectReview} setIsSelectReview={setIsSelectReview}
+                isOpenDetail={isOpenDetail} setIsOpenDetail={setIsOpenDetail}
             />
         </>
     );
