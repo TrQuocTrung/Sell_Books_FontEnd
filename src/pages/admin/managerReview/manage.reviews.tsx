@@ -3,8 +3,9 @@ import { ProTable } from '@ant-design/pro-components';
 import { App, Button, Dropdown, Popconfirm } from 'antd';
 import { DeleteTwoTone, EditTwoTone, EllipsisOutlined } from '@ant-design/icons';
 import { useRef, useState } from 'react';
-import { getAllReview } from '@/service/api';
+import { deleteReviewApi, getAllReview } from '@/service/api';
 import DetailReview from './detail.review';
+import UpdateReview from './update.review';
 
 const ManagerReview = () => {
     const { message } = App.useApp();
@@ -12,6 +13,7 @@ const ManagerReview = () => {
     const [isSelectReview, setIsSelectReview] = useState<IReview | null>(null)
     const [isOpenDetail, setIsOpenDetail] = useState(false)
     const [isOpenUpdateReview, setisOpenUpdateReview] = useState(false)
+
     const [meta, setMeta] = useState({
         current: 1,
         pageSize: 5,
@@ -75,8 +77,8 @@ const ManagerReview = () => {
                         twoToneColor="#f57800"
                         style={{ cursor: 'pointer', marginRight: 15 }}
                         onClick={() => {
-
-
+                            setisOpenUpdateReview(true)
+                            setIsSelectReview(record)
                         }}
                     />
                     <Popconfirm
@@ -84,7 +86,20 @@ const ManagerReview = () => {
                         okText="Xóa"
                         cancelText="Hủy"
                         placement="topRight"
-
+                        onConfirm={async () => {
+                            try {
+                                const res = await deleteReviewApi(record._id)
+                                if (res.statusCode === 200) {
+                                    message.success('Xóa đánh giá thành công')
+                                    actionRef.current?.reload();
+                                } else {
+                                    message.error(res.message || 'Xóa thất bại')
+                                }
+                            } catch (err) {
+                                console.error(err)
+                                message.error('Đã xảy ra lỗi khi xóa đánh giá')
+                            }
+                        }}
                     >
                         <DeleteTwoTone twoToneColor="#ff4d4f" style={{ cursor: 'pointer' }} />
                     </Popconfirm>
@@ -151,6 +166,13 @@ const ManagerReview = () => {
             <DetailReview
                 isSelectReview={isSelectReview} setIsSelectReview={setIsSelectReview}
                 isOpenDetail={isOpenDetail} setIsOpenDetail={setIsOpenDetail}
+            />
+            <UpdateReview
+                isOpenUpdateReview={isOpenUpdateReview}
+                setisOpenUpdateReview={setisOpenUpdateReview}
+                isSelectReview={isSelectReview}
+                setIsSelectReview={setIsSelectReview}
+                actionRef={actionRef}
             />
         </>
     );

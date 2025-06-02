@@ -179,6 +179,8 @@ declare global {
     interface UpdateOrderStatusDto {
         status: 'pending' | 'confirmed' | 'shipped' | 'delivered' | 'cancelled' | 'complete';
     }
+
+    //Interface Review
     interface IReview {
         _id: string;
         rating: number;
@@ -188,6 +190,10 @@ declare global {
         book: IBook;
         createdBy: IUser;
         updatedBy: string | IUser;
+    }
+    interface IUpdateReviewPayload {
+        rating: number
+        comment: string
     }
     interface IUserTable {
         _id: string,

@@ -79,6 +79,14 @@ export const getAllReview = (query: string | null) => {
     const urlQuery = `/api/v1/review${query ? `?${query}` : ''}`;
     return axios.get<IBackendRes<IModelPaginate<IReview>>>(urlQuery);
 };
+export const updateReviewApi = (id: string, data: IUpdateReviewPayload) => {
+    const urlQuery = `/api/v1/review/${id}`;
+    return axios.patch<IBackendRes<IReview>>(urlQuery, data)
+}
+export const deleteReviewApi = (id: string) => {
+    const urlQuery = `/api/v1/review/${id}`;
+    return axios.delete<IBackendRes<IReview>>(urlQuery)
+}
 //Order
 export const createOrder = (data: ICreateOrderPayload) => {
     const urlBackend = `/api/v1/order`;

@@ -118,7 +118,7 @@ const ManagerOrders = () => {
                 columns={columns}
                 actionRef={actionRef}
                 cardBordered
-                request={async (params) => {
+                request={async (params,) => {
                     const query = `current=${params.current}&pageSize=${params.pageSize}`;
                     try {
                         const res = await getallOrderApi(query);
