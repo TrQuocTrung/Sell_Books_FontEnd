@@ -44,7 +44,7 @@ declare global {
             phone: number;
         };
     }
-
+    //InterFace User
     interface IUser {
         _id: string;
         email: string;
@@ -83,7 +83,7 @@ declare global {
     interface IFetchAccount {
         user: IUser;
     }
-
+    //Interface Category
     interface ICategory {
         _id: string;
         name: string;
@@ -96,7 +96,7 @@ declare global {
             results: ICategory[];
         };
     }
-
+    //Interface Book
     interface IBook {
         _id: string;
         name: string;
@@ -144,7 +144,7 @@ declare global {
             };
         };
     }
-
+    //Interface Order
     interface IOrderItem {
         _id: string;
         book: IBook | null; // Vì API trả null trường hợp sách bị xóa
@@ -153,7 +153,7 @@ declare global {
 
     interface IOrder {
         _id: string;
-        user: string; // API trả user là id chuỗi, hoặc thay bằng object nếu có info user
+        user: IUser; // API trả user là id chuỗi, hoặc thay bằng object nếu có info user
         items: IOrderItem[];
         totalAmount: number;
         status: string;

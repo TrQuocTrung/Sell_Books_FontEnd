@@ -20,6 +20,7 @@ import ManagerBooks from './pages/admin/managerBook/manager.books';
 import { ConfigProvider } from 'antd';
 import viVN from 'antd/locale/vi_VN';
 import ManagerUsers from './pages/admin/managerUser/manage.user';
+import ManagerOrders from './pages/admin/managerOrder/manager.orders';
 
 let router = createBrowserRouter([
   {
@@ -83,8 +84,8 @@ let router = createBrowserRouter([
         element: <ManagerBooks />
       },
       {
-        path: "oders",
-        element: <div></div>
+        path: "orders",
+        element: <ManagerOrders />
       },
       {
         path: "categories",

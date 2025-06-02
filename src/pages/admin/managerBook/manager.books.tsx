@@ -69,6 +69,8 @@ const ManagerBooks = () => {
             title: 'Giá',
             dataIndex: 'price',
             valueType: 'money',
+            hideInSearch: true,
+
         },
         {
             title: 'Số lượng còn',
@@ -84,6 +86,8 @@ const ManagerBooks = () => {
             title: 'Ngày tạo',
             dataIndex: 'createdAt',
             valueType: 'dateTime',
+            hideInSearch: true,
+
         },
         {
             title: 'Ngày cập nhật',
